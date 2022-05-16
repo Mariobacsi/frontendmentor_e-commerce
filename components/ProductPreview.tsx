@@ -1,26 +1,30 @@
 import { NextPage } from "next";
+import { useState } from "react";
+import Product from "classes/Product";
 
 import ImageRoulette from "components/ImageRoulette";
 import AmountPicker from "components/AmountPicker";
 import AddToCartButton from "components/AddToCartButton";
+import { debug } from "console";
 
 interface Props {
-  brand: string;
-  productName: string;
-  description: string;
-  price: number;
-  discount: number;
-  pictures: string[];
+  product: Product;
 }
 
 const ProductPreview: NextPage<Props> = (props) => {
-  const { brand, productName, description, price, discount, pictures } = props;
+  const { product } = props;
+  const { brand, productName, description, price, discount, pictures } =
+    product;
 
-  let amount;
+  const [amount, setAmount] = useState(1);
 
+  /**
+   * Callback for the amount picker
+   * @param value - the new value
+   */
   const callback = (value: number) => {
-    console.debug(productName + ":", value);
-    amount = value;
+    console.debug("New amount:", value);
+    setAmount(value);
   };
 
   return (
@@ -47,27 +51,28 @@ const ProductPreview: NextPage<Props> = (props) => {
           <AmountPicker
             min={0}
             max={50}
-            initValue={1}
+            initValue={amount}
             parentCallback={callback}
           />
-          <AddToCartButton />
+          <AddToCartButton product={product} amount={amount} />
         </div>
       </section>
     </article>
   );
 };
 
+// Renders the price with the discount if it is defined/available
 const RenderPrice = (price: number, discount: number) => {
-  if (discount > 0)
+  if (discount > 0 && discount < 1) {
     return (
-      <div className="flex flex-row">
-        <data>${price * (1 - discount)}</data>{" "}
-        <div className="mx-4 place-self-center bg-orange-200 px-1 text-xs text-orange-400">
-          <data>{100 * discount}%</data>
-        </div>
+      <div>
+        <data>${price * (1 - discount)}</data>
+        <span className="mx-4 place-self-center bg-orange-200 px-1 text-xs text-orange-400">
+          <data>-{100 * discount}%</data>
+        </span>
       </div>
     );
-  return null;
+  }
 };
 
 export default ProductPreview;

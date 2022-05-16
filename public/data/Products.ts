@@ -1,31 +1,4 @@
-import { timeStamp } from "console";
-
-class Product {
-  productID: String;
-  brand: string;
-  productName: string;
-  description: string;
-  price: number;
-  discount: number;
-  pictures: Array<string>;
-  constructor(
-    productID: string,
-    brand: string,
-    productName: string,
-    description: string,
-    price: number,
-    discount: number,
-    pictures: Array<string>
-  ) {
-    this.productID = productID;
-    this.brand = brand;
-    this.productName = productName;
-    this.description = description;
-    this.price = price;
-    this.discount = discount;
-    this.pictures = pictures;
-  }
-}
+import Product from "classes/Product";
 
 const products = [
   new Product(
@@ -44,6 +17,20 @@ const products = [
   ),
   new Product(
     "00000002",
+    "Generic Company Name",
+    "Schuhe",
+    "Produktbeschreibung generischer Schuhe wie man sie Überall findet.",
+    150,
+    0.4,
+    [
+      "/image-product-1",
+      "/image-product-2",
+      "/image-product-3",
+      "/image-product-4",
+    ]
+  ),
+  new Product(
+    "00000003",
     "Generic Company Name",
     "Schuhe",
     "Produktbeschreibung generischer Schuhe wie man sie Überall findet.",

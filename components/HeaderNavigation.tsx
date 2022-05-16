@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import ShoppingCart from "./ShoppingCart";
 
 const HeaderNavigation = () => {
   return (
-    <header className=" flex flex-row items-center justify-between border-b-2 py-6">
+    <header className=" sticky top-0 z-10 flex flex-row items-center justify-between border-b-2 bg-white py-4">
       {/* Logo and nav links */}
-      <nav className="flex w-3/5 max-w-4xl flex-row flex-wrap justify-between gap-2">
-        <h1 className=" text-xl font-extrabold leading-none">
+      <nav className="flex w-3/5 max-w-4xl flex-row flex-wrap gap-2 sm:flex-nowrap">
+        <h1 className=" mr-0 text-xl font-extrabold leading-none md:mr-4">
           <Link href="/">sneakers</Link>
         </h1>
         <Link href={"/collections"}>Collections</Link>
@@ -19,16 +20,7 @@ const HeaderNavigation = () => {
       {/* Shopping cart and profile */}
       <div className="flex flex-row items-center">
         {/* Shopping cart */}
-        <button className=" mr-4 flex h-9 w-9 rounded-full p-2 hover:bg-orange-400 hover:shadow-md">
-          <Image
-            src="/images/icon-cart.svg"
-            alt="Shopping Cart"
-            width={20}
-            height={20}
-            className="fill-white"
-          />
-        </button>
-
+        <ShoppingCart />
         {/* Profile */}
         <div className=" relative flex h-12 w-12 rounded-full p-2">
           <Image

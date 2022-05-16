@@ -46,7 +46,7 @@ const ImageRoulette: NextPage<Props> = (props) => {
             height={sizeThumbnail}
             layout="responsive"
             objectFit="cover"
-            className={"m-0 rounded-xl p-0" + (ci === p ? " grayscale" : "")}
+            className={`m-0 rounded-xl p-0 ${ci === p ? " grayscale" : ""}`}
           />
         </button>
       ))}

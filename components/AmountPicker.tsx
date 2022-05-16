@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NextPage } from "next";
+import styles from "styles/AmountPicker.module.css";
 
 interface Props {
   min: number;
@@ -40,7 +41,7 @@ const AmountPicker: NextPage<Props> = (props) => {
   return (
     <div className="flex flex-row flex-nowrap rounded-md">
       <button
-        className="w-8 rounded-l-md border-r-2 bg-slate-100 font-bold text-orange-400"
+        className={`rounded-l-md border-r-2 ${styles.btn}`}
         onClick={() => changeAmount(amount - 1)}
       >
         -
@@ -54,7 +55,7 @@ const AmountPicker: NextPage<Props> = (props) => {
         className="w-10 bg-slate-100 p-2 text-center outline-none"
       />
       <button
-        className="w-8 rounded-r-md border-l-2 bg-slate-100 font-bold text-orange-400"
+        className={`rounded-r-md border-l-2 ${styles.btn}`}
         onClick={() => changeAmount(amount + 1)}
       >
         +

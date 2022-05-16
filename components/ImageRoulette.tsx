@@ -33,6 +33,7 @@ const ImageRoulette: NextPage<Props> = (props) => {
       {/* Image Selector */}
       {pictures.map((p) => (
         <button
+          key={p}
           className={
             "aspect-square rounded-xl outline-orange-400 filter" +
             (ci === p ? " outline" : "")
